@@ -48,6 +48,7 @@ jobs:
           echo -e FLIPPER_VERSION=0.51.0 >> ./gradle.properties
           echo -e VERSIONCODE=${{ github.run_number }} >> ./gradle.properties
           echo -e APPLICATION_ID=${{ secrets.ANDROID_APPLICATION_ID }} >> ./gradle.properties
+          echo -e BugsnagAPIKey="" >> ./gradle.properties
           echo -e KEYSTORE=./app/key.keystore >> ./gradle.properties
           echo -e KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }} >> ./gradle.properties
           echo -e KEY_ALIAS=${{ secrets.KEY_ALIAS }} >> ./gradle.properties
