@@ -12,6 +12,7 @@ let reportAnalyticsEvents = true;
 export const getReportCrashErrorsValue = (): boolean => reportCrashErrors;
 export const getReportAnalyticsEventsValue = (): boolean => reportAnalyticsEvents;
 
+/*
 if (!isFDroidBuild) {
 	bugsnag = require('@bugsnag/react-native').default;
 	bugsnag.start({
@@ -27,9 +28,10 @@ if (!isFDroidBuild) {
 	});
 	crashlytics = require('@react-native-firebase/crashlytics').default;
 }
+*/
 
 export { analytics };
-export const loggerConfig = bugsnag.config;
+//export const loggerConfig = bugsnag.config;
 export { events };
 
 let metadata = {};
@@ -41,6 +43,7 @@ export const logServerVersion = (serverVersion: string): void => {
 };
 
 export const logEvent = (eventName: string, payload?: { [key: string]: any }): void => {
+	/*
 	try {
 		if (!isFDroidBuild) {
 			analytics().logEvent(eventName, payload);
@@ -49,13 +52,16 @@ export const logEvent = (eventName: string, payload?: { [key: string]: any }): v
 	} catch {
 		// Do nothing
 	}
+	*/
 };
 
 export const setCurrentScreen = (currentScreen: string): void => {
+	/*
 	if (!isFDroidBuild) {
 		analytics().logScreenView({ screen_class: currentScreen, screen_name: currentScreen });
 		bugsnag.leaveBreadcrumb(currentScreen, { type: 'navigation' });
 	}
+	*/
 };
 
 export const toggleCrashErrorsReport = (value: boolean): boolean => {
@@ -69,6 +75,7 @@ export const toggleAnalyticsEventsReport = (value: boolean): boolean => {
 };
 
 export default (e: any): void => {
+	/*
 	if (e instanceof Error && bugsnag && e.message !== 'Aborted' && !__DEV__) {
 		bugsnag.notify(e, (event: { addMetadata: (arg0: string, arg1: {}) => void }) => {
 			event.addMetadata('details', { ...metadata });
@@ -77,6 +84,9 @@ export default (e: any): void => {
 			crashlytics().recordError(e);
 		}
 	} else {
+	*/
 		console.error(e);
+	/*
 	}
+	*/
 };
